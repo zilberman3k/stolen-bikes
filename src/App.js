@@ -3,10 +3,13 @@ import Filters from "./components/Filters";
 import {useFetch} from "./hooks";
 import Footer from "./components/Footer";
 import Incidents from "./components/Incidents";
-import Loading from "./components/Loading";
 import Header from "./components/Header";
 import './styles.scss'
 
+/**
+ *
+ * Stolen Bikes App.
+ */
 function App() {
 
     const [allQueryParams, setAllQueryParams] = useState ({
@@ -43,12 +46,7 @@ function App() {
         <div className="main-app">
             <Header/>
             <Filters onClick={triggerSearch}/>
-            {isLoading ?
-                <Loading/>
-                :
-                <Incidents data={data}/>
-            }
-
+            <Incidents data={data} loading={isLoading}/>
             <Footer loadNextPage={loadNextPage} page={allQueryParams.page}/>
         </div>
     );

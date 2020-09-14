@@ -2,6 +2,11 @@ import {useState, useEffect} from 'react'
 
 const URL = 'http://bikewise.org/api/v2/incidents?';
 
+/**
+ * fetch data by url params - no error handled.
+ * @param initialParams
+ * @returns {{isLoading: boolean, data: *[], updateParams: React.Dispatch<React.SetStateAction<{}>>}}
+ */
 export const useFetch = (initialParams = {}) => {
     const [params, updateParams] = useState (initialParams);
     const [data, setData] = useState ([]);
